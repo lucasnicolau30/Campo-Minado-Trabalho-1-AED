@@ -1,7 +1,8 @@
-#include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
+
 
 #define MINA -1
 
@@ -101,7 +102,7 @@ int main() {
     int n = 0, minas = 0;
 
     while (1){ 
-        printf("Escolha a dificuldade do jogo: (facil, medio ou dificil).\n");
+        printf("Escolha uma das dificuldades a seguir: facil , medio ou dificil.\n");
         scanf("%99s", nivel);
 
         if(strcmp(nivel, "facil") == 0){
@@ -133,7 +134,7 @@ int main() {
 	
     int jogoAtivo = 1;
     while(jogoAtivo){
-        printf("Digite as coordenadas (linha, coluna): ");
+        printf("Digite as coordenadas dessa maneira: (linha, coluna): ");
         int linha, coluna;
         scanf("%d,%d", &linha, &coluna); 
         // Ajusta para índices para começar em 0,0
