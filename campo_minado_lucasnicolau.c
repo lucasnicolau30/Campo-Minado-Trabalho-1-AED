@@ -6,36 +6,54 @@
 
 #define MINA -1
 
+// Função para alocar a matriz de inteiros (campo minado)
 int** alocaMatriz(int n){
-	int **mat = malloc(n * sizeof(int *));
-		for(int i = 0; i < n; i++){
-			mat[i] = malloc(n * sizeof(int));
-		}
-	return mat; 
+    int **mat = malloc(n * sizeof(int *)); // Aloca memória para as linhas
+    if (mat == NULL){
+        printf("Erro na alocação de memória para a matriz\n");
+        exit(1); // Finaliza o programa em caso de erro
+    }
+    for(int i = 0; i < n; i++){
+        mat[i] = malloc(n * sizeof(int)); // Aloca memória para cada linha
+        if (mat[i] == NULL){
+            printf("Erro na alocação de memória para a linha %d da matriz\n", i);
+            exit(1); // Finaliza o programa em caso de erro
+        }
+    }
+    return mat; // Retorna o ponteiro para a matriz alocada
 }
 
-// mascara será a matriz auxiliar que aparecerá para o usuário
+// Função para alocar a matriz auxiliar (máscara do campo minado , qual o usuário irá ver ao jogar)
 char** alocaMascara(int n){
-	char **mascara = malloc(n * sizeof(char *));
-		for(int i = 0; i < n; i++){
-			mascara[i] = malloc(n * sizeof(char));
-		}
-	return mascara;
+    char **mascara = malloc(n * sizeof(char *)); // Aloca memória para as linhas
+    if (mascara == NULL){
+        printf("Erro na alocação de memória para a máscara\n");
+        exit(1); // Finaliza o programa em caso de erro
+    }
+    for(int i = 0; i < n; i++){
+        mascara[i] = malloc(n * sizeof(char)); // Aloca memória para cada linha
+        if (mascara[i] == NULL){
+            printf("Erro na alocação de memória para a linha %d da máscara\n", i);
+            exit(1); // Finaliza o programa em caso de erro
+        }
+    }
+    return mascara; // Retorna o ponteiro para a máscara alocada
 }
 
+// Função para inicializar a matriz com 0 (campo minado original)
 void inicializaMatriz(int **mat, int n){
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
-            mat[i][j] = 0; 
+            mat[i][j] = 0; // Inicializa cada célula com 0
         }
     }
 }
 
-// o char escolhido para aparecer pro usuário será # e a cada jogada receberá o valor da matriz original referente a posicao esolhida  
+// Função para inicializar a máscara (matriz auxiliar) com '#'
 void inicializaMascara(char **mascara, int n){
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
-            mascara[i][j] = '#'; 
+            mascara[i][j] = '#'; // Inicializa cada célula com '#'
         }
     }
 }
