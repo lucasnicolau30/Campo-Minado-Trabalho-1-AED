@@ -100,8 +100,13 @@ void adicionaMinas(int **mat, int n, int minas){
 void imprimeMatriz(int **mat, int n){
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
-            printf("%d ", mat[i][j]); 
+            if(mat[i][j] == -1){
+                printf("%d ", mat[i][j]); // Exibe as minas como -1 
+            } else {
+                printf(" %d ", mat[i][j]); // Exibe os outros valores
+            }
         }
+		 // Há esse if e else para manter a matriz totalmente reta ao exibir as coordenadas com -1 
         printf("\n");
     }
 }
